@@ -1,0 +1,15 @@
+Figure out crew/crew_head/student relations
+
+Write crew CRUD
+
+Figure out how to deal with time
+
+Write utility functions for:
+- getting current week color
+- returning crew from color and day
+
+Create homepage
+- Structure
+- CSS Stylin'
+
+Sync with Google Calendar

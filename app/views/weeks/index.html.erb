@@ -1,0 +1,16 @@
+<h1>Listing Weeks</h1>
+
+<table>
+	<tr>
+		<th>Start</th>
+		<th>Color</th>
+	</tr>
+	<% @weeks.each do |week| %>
+		<tr>
+			<td><%= week.start_day %></td>
+			<td><%= week.color %></td>
+		</tr>
+	<% end %>
+</table>
+
+<%= link_to 'New Week', new_week_path %>

@@ -11,9 +11,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20141011223311) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "crew_heads", force: true do |t|
+    t.string   "name"
+    t.integer  "crew_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "crews", force: true do |t|
+    t.string   "color"
+    t.string   "day"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "type"
+  end
+
+  create_table "students", force: true do |t|
+    t.string   "name"
+    t.integer  "crew_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "weeks", force: true do |t|
+    t.string   "color"
+    t.date     "start_day"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
