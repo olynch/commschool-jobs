@@ -1,0 +1,13 @@
+<%= form_for @week do |f| %>
+	<p>
+		<%= f.label :color %><br />
+		<%= f.text_field :color %>
+	</p>
+	<p>
+		<%= f.label :start_day %><br />
+		<%= f.date_field :start_day %>
+	</p>
+	<p>
+		<%= f.submit %>
+	</p>
+<% end %>

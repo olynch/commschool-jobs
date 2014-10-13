@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141011223311) do
+ActiveRecord::Schema.define(version: 20141012232244) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,11 +38,24 @@ ActiveRecord::Schema.define(version: 20141011223311) do
     t.datetime "updated_at"
   end
 
+  create_table "week_types", force: true do |t|
+    t.string   "monday"
+    t.string   "tuesday"
+    t.string   "wednesday"
+    t.string   "thursday"
+    t.string   "friday"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "weeks", force: true do |t|
     t.string   "color"
     t.date     "start_day"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "week_type_id"
   end
+
+  add_index "weeks", ["week_type_id"], name: "index_weeks_on_week_type_id", using: :btree
 
 end

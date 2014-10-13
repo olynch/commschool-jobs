@@ -1,0 +1,29 @@
+<h1>New Crew</h1>
+
+<%= form_for @crew do |f| %>
+	<p>
+		<%= f.label :color %>:
+		<%= f.select :color, [["red", "red"], ["yellow", "yellow"], ["blue", "blue"]] %>
+	</p>
+
+	<p>
+		<%= f.label :day %>:
+		<%= f.text_field :day %>
+	</p>
+
+	<p>
+		Crew Head:
+		<%= fields_for 'crew[crew_head]', @crew.crew_head do |head_f| %>
+			<%= head_f.text_field :name %>
+		<% end %>
+	</p>
+
+	<p>
+		Students:<br />
+		<textarea id="crew_students_names" name="crew[students][names]"></textarea>
+	</p>
+	
+	<p>
+		<%= f.submit %>
+	</p>
+<% end %>

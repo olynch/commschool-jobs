@@ -9,6 +9,8 @@
 		<tr>
 			<td><%= week.start_day %></td>
 			<td><%= week.color %></td>
+			<td><%= link_to 'Edit', edit_week_path(week) %></td>
+			<td><%= link_to 'Destroy', week_path(week), method: :delete, data: { confirm: 'Are you sure?' } %></td>
 		</tr>
 	<% end %>
 </table>
