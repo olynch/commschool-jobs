@@ -2,7 +2,7 @@ class CrewHead < ActiveRecord::Base
 	# Attributes:
 	# name:string
 	
-	belongs_to :crew
+	belongs_to :crew, dependent: :destroy
 	has_many :students, through: :crew
 
 	def new

@@ -9,9 +9,4 @@ class Crew < ActiveRecord::Base
 	def new
 	end
 
-	def create
-		@crew = Crew.new(params[:crew])
-
-		@crew.save
-	end
 end

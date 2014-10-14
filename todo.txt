@@ -1,12 +1,14 @@
-Figure out crew/crew_head/student relations
+[x] Figure out crew/crew_head/student relations
 
-Write crew CRUD
+[x] Write crew CRUD
+
+Write crew update and index views
 
 Figure out how to deal with time
 
 Write utility functions for:
-- getting current week color
-- returning crew from color and day
+- getting current week (needs to be cached)
+- returning crews from color and day (also needs to be cached)
 
 Create homepage
 - Structure

@@ -1,0 +1,12 @@
+<ul>
+<%= @crews.each do |crew| %>
+	<li> Day: <%= crew.day %>, Color: <%= crew.color %>
+	<ul>
+		<li>Crew Head: <%= crew.crew_head.name %></li>
+		<%= crew.students.each do |student| %>
+			<li> <%= student.name %> </li>
+		<% end %>
+	</ul>
+	</li>
+<% end %>
+</ul>
