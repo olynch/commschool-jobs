@@ -5,15 +5,14 @@ class CrewsController < ApplicationController
 
 	def create
 		@crew = Crew.new(crew_params)
-		@crew.save
 
-		@crew_head = CrewHead.new(crew_head_params.merge(:crew_id => @crew.id))
-		@crew_head.save
+		@crew.create_crew_head(crew_head_params)
 
 		params[:crew][:students][:names].split(", ").each do |student|
-			@new_student = Student.new(:name => student, :crew_id => @crew.id)
-			@new_student.save
+			@crew.students.create(name: student)
 		end
+
+		@crew.save
 
 		redirect_to crews_path
 	end
@@ -29,12 +28,11 @@ class CrewsController < ApplicationController
 		@crew.crew_head.update(crew_head_params)
 
 		@crew.students.each do |student|
-			student.destroy
+			@crew.students.destroy(student)
 		end
 
 		params[:crew][:students][:names].split(", ").each do |student|
-			@new_student = Student.new(:name => student, :crew_id => @crew.id)
-			@new_student.save
+			@crew.students.create(name: student)
 		end
 
 		redirect_to crews_path
