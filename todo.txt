@@ -2,13 +2,10 @@
 
 [x] Write crew CRUD
 
-Write crew update and index views
+[x] Write crew update and index views
 
-Figure out how to deal with time
-
-Write utility functions for:
-- getting current week (needs to be cached)
-- returning crews from color and day (also needs to be cached)
+[x] Write utility functions for:
+- Getting current crew and week (class methods on Crew and Week)
 
 Create homepage
 - Structure

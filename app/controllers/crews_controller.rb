@@ -4,12 +4,12 @@ class CrewsController < ApplicationController
 	end
 
 	def create
-		@crew = Crew.new(crew_params)
+		@crew = Crew.new crew_params
 
-		@crew.create_crew_head(crew_head_params)
+		@crew.create_crew_head crew_head_params
 
 		params[:crew][:students][:names].split(", ").each do |student|
-			@crew.students.create(name: student)
+			@crew.students.create name: student
 		end
 
 		@crew.save
@@ -22,35 +22,42 @@ class CrewsController < ApplicationController
 	end
 
 	def update
-		@crew = Crew.find(params[:id])
-		@crew.update(crew_params)
+		@crew = Crew.find params[:id]
+		@crew.update crew_params
 
-		@crew.crew_head.update(crew_head_params)
+		@crew.crew_head.update crew_head_params
+		puts @crew
 
-		@crew.students.each do |student|
-			@crew.students.destroy(student)
+		if @crew.students.map{ |s| s.name }.join(", ") != params[:crew][:students][:names]
+			@crew.students.each { |s| s.destroy }
+
+			params[:crew][:students][:names].split(", ").each do |student|
+				@crew.students.create name: student
+			end
 		end
 
-		params[:crew][:students][:names].split(", ").each do |student|
-			@crew.students.create(name: student)
-		end
+		@crew.save
 
 		redirect_to crews_path
 	end
 
 	def destroy
-		@crew = Crew.find(params[:id])
+		@crew = Crew.find params[:id]
 
 		@crew.destroy
 		redirect_to crews_path
 	end
 
-	private
-		def crew_params
-			params.require(:crew).permit(:color, :day)
-		end
+	def edit
+		@crew = Crew.find params[:id]
+	end
 
-		def crew_head_params
-			params.require(:crew).require(:crew_head).permit(:name)
-		end
+	private
+	def crew_params
+		params.require(:crew).permit :color, :day
+	end
+
+	def crew_head_params
+		params.require(:crew).require(:crew_head).permit(:name)
+	end
 end

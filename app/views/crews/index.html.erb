@@ -1,12 +1,16 @@
+<h1>Listing Crews</h1>
+
 <ul>
-<%= @crews.each do |crew| %>
-	<li> Day: <%= crew.day %>, Color: <%= crew.color %>
-	<ul>
-		<li>Crew Head: <%= crew.crew_head.name %></li>
-		<%= crew.students.each do |student| %>
-			<li> <%= student.name %> </li>
-		<% end %>
-	</ul>
-	</li>
-<% end %>
+	<%= @crews.each do |crew| %>
+		<li> Day: <%= crew.day %>, Color: <%= crew.color %>
+		<ul>
+			<li>Crew Head: <%= crew.crew_head.name %></li>
+			<%= crew.students.each do |student| %>
+				<li> <%= student.name %> </li>
+			<% end %>
+			<li> <%= link_to 'Edit', edit_crew_path(crew) %> </li>
+			<li> <%= link_to 'Destroy', crew_path(crew), method: :delete, data: { confirm: 'Are you sure?' } %></li>
+		</ul>
+		</li>
+	<% end %>
 </ul>
