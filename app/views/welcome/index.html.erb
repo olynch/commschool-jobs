@@ -1,2 +1,40 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-2 col-md-offset-3">
+			<img src="/mermaid.gif" alt="Our Beloved Mermaid" />
+		</div>
+		<div class="col-md-4">
+			<h1>Jobs Today</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-3 col-md-offset-3">
+			<h3>Recess Cleanup</h3>
+			<% @crews[:recess].students.each do |s| %>
+				<%= s.name %><br />
+			<% end %>
+		</div>
+		<div class="col-md-3">
+			<h3>Lunch Setup</h3>
+			<% @crews[:setup].students.each do |s| %>
+				<%= s.name %><br />
+			<% end %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-3 col-md-offset-3">
+			<h3><%= @crews[:lunch1].color.capitalize %> Lunch Crew</h3>
+			<strong>Crew Head: </strong> <%= @crews[:lunch1].crew_head.name %> <br />
+			<% @crews[:lunch1].students.each do |s| %>
+				<%= s.name %><br />
+			<% end %>
+		</div>
+		<div class="col-md-3">
+			<h3><%= @crews[:lunch2].color.capitalize %> Lunch Crew</h3>
+			<strong>Crew Head: </strong> <%= @crews[:lunch2].crew_head.name %> <br />
+			<% @crews[:lunch2].students.each do |s| %>
+				<%= s.name %><br />
+			<% end %>
+		</div>
+</div>

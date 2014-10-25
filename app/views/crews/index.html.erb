@@ -1,11 +1,13 @@
 <h1>Listing Crews</h1>
 
+<%= link_to 'New Crew', new_crew_path %>
+
 <ul>
-	<%= @crews.each do |crew| %>
+	<% @crews.each do |crew| %>
 		<li> Day: <%= crew.day %>, Color: <%= crew.color %>
 		<ul>
 			<li>Crew Head: <%= crew.crew_head.name %></li>
-			<%= crew.students.each do |student| %>
+			<% crew.students.each do |student| %>
 				<li> <%= student.name %> </li>
 			<% end %>
 			<li> <%= link_to 'Edit', edit_crew_path(crew) %> </li>
