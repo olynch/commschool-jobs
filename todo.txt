@@ -7,8 +7,8 @@
 [x] Write utility functions for:
 - Getting current crew and week (class methods on Crew and Week)
 
-Create homepage
-- Structure
-- CSS Stylin'
+[x] Create homepage
+
+Add Authentication
 
 Sync with Google Calendar
