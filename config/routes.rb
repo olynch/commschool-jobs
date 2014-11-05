@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  devise_for :job_masters
+
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
 	resources :weeks
 	resources :crews
 
