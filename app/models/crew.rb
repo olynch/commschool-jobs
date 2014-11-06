@@ -19,7 +19,7 @@ class Crew < ActiveRecord::Base
 		if curweek
 			crew_map = Hash.new
 			day = Time.now.strftime("%A").downcase
-			[ :lunch1, :lunch2, :setup, :recess ].each.with_index do |item, i|
+			[ :lunch1, :lunch2, :recess, :setup ].each.with_index do |item, i|
 				crew_map[item] = Crew.find_by(day: day, color: Color_Hash[curweek.color][i])
 			end
 			return crew_map
