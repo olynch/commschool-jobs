@@ -8,33 +8,42 @@
 			<h1>Jobs Today</h1>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col-md-3 col-md-offset-3">
-			<h3>Recess Cleanup</h3>
-			<% @crews[:recess].students.each do |s| %>
-				<%= s.name %><br />
-			<% end %>
+	<% unless (@week.nil? or @crew.nil?) %>
+		<div class="row">
+			<div class="col-md-3 col-md-offset-3">
+				<h3>Recess Cleanup</h3>
+				<% @crews[:recess].students.each do |s| %>
+					<%= s.name %><br />
+				<% end %>
+			</div>
+			<div class="col-md-3">
+				<h3>Lunch Setup</h3>
+				<% @crews[:setup].students.each do |s| %>
+					<%= s.name %><br />
+				<% end %>
+			</div>
 		</div>
-		<div class="col-md-3">
-			<h3>Lunch Setup</h3>
-			<% @crews[:setup].students.each do |s| %>
-				<%= s.name %><br />
-			<% end %>
+		<div class="row">
+			<div class="col-md-3 col-md-offset-3">
+				<h3><%= @crews[:lunch1].color.capitalize %> Lunch Crew</h3>
+				<strong>Crew Head: </strong> <%= @crews[:lunch1].crew_head.name %> <br />
+				<% @crews[:lunch1].students.each do |s| %>
+					<%= s.name %><br />
+				<% end %>
+			</div>
+			<div class="col-md-3">
+				<h3><%= @crews[:lunch2].color.capitalize %> Lunch Crew</h3>
+				<strong>Crew Head: </strong> <%= @crews[:lunch2].crew_head.name %> <br />
+				<% @crews[:lunch2].students.each do |s| %>
+					<%= s.name %><br />
+				<% end %>
+			</div>
 		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-3 col-md-offset-3">
-			<h3><%= @crews[:lunch1].color.capitalize %> Lunch Crew</h3>
-			<strong>Crew Head: </strong> <%= @crews[:lunch1].crew_head.name %> <br />
-			<% @crews[:lunch1].students.each do |s| %>
-				<%= s.name %><br />
-			<% end %>
+	<% else %>
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<h1>No Crews found for today</h1>
+			</div>
 		</div>
-		<div class="col-md-3">
-			<h3><%= @crews[:lunch2].color.capitalize %> Lunch Crew</h3>
-			<strong>Crew Head: </strong> <%= @crews[:lunch2].crew_head.name %> <br />
-			<% @crews[:lunch2].students.each do |s| %>
-				<%= s.name %><br />
-			<% end %>
-		</div>
+	<% end %>
 </div>
