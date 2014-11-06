@@ -3,8 +3,14 @@ class Week < ActiveRecord::Base
 	# color:string
 	# start_day:date
 	belongs_to :week_type
+	validates :color, :presence => true
+	validates :start_day, :presence => true
 
 	def new
+	end
+
+	def color_enum
+		["rainbow", "purple", "orange", "green"]
 	end
 
 	def self.current

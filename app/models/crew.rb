@@ -2,9 +2,12 @@ class Crew < ActiveRecord::Base
 	# Attributes:
 	# color:string
 	# day:string
+	# crew_head:string
 	
 	has_many :students, dependent: :destroy
-	has_one :crew_head, dependent: :destroy
+	validates :color, :presence => true
+	validates :day, :presence => true
+
 	Color_Hash = { 'purple' => ['red', 'blue', 'recess', 'setup'], 'orange' => ['red', 'yellow', 'recess', 'setup'], 'green' => ['yellow', 'blue', 'recess', 'setup'] }
 
 	def new
@@ -24,4 +27,13 @@ class Crew < ActiveRecord::Base
 			return nil
 		end
 	end
+
+	def color_enum
+		['red', 'blue', 'yellow', 'setup', 'recess']
+	end
+
+	def day_enum
+		['monday', 'tuesday', 'wednesday', 'thursday', 'friday']
+	end
+
 end
