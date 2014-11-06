@@ -15,12 +15,12 @@ class Crew < ActiveRecord::Base
 
 	def self.current
 		# return the current crews as a ActiveRecord query
-		#Crew.where(color: Color_Hash[Week.current.color], day: Time.now.strftime("%A").downcase)
 		curweek = Week.current
 		if curweek
 			crew_map = Hash.new
+			day = Time.now.strftime("%A").downcase
 			[ :lunch1, :lunch2, :setup, :recess ].each.with_index do |item, i|
-				crew_map[item] = Crew.find_by(color: Color_Hash[curweek.color][i])
+				crew_map[item] = Crew.find_by(day: day, color: Color_Hash[curweek.color][i])
 			end
 			return crew_map
 		else
