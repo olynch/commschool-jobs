@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+source 'https://rails-assets.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -36,6 +37,7 @@ gem 'devise'
 gem 'unicorn'
 
 gem 'react-rails', '~> 1.0.0pre', github: 'reactjs/react-rails'
+gem 'rails-assets-react-bootstrap'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

@@ -10,6 +10,7 @@ GIT
 
 GEM
   remote: https://rubygems.org/
+  remote: https://rails-assets.org/
   specs:
     actionmailer (4.1.4)
       actionpack (= 4.1.4)
@@ -107,6 +108,7 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.1.4)
       sprockets-rails (~> 2.0)
+    rails-assets-react-bootstrap (0.12.0)
     rails_12factor (0.0.2)
       rails_serve_static_assets
       rails_stdout_logging
@@ -190,6 +192,7 @@ DEPENDENCIES
   jquery-rails
   pg
   rails (= 4.1.4)
+  rails-assets-react-bootstrap
   rails_12factor
   rails_admin
   react-rails (~> 1.0.0pre)!

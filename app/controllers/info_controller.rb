@@ -1,7 +1,7 @@
 class InfoController < ApplicationController
 	def index
 		@week = Week.current
-		@crews = Crew.current
+    @crews_json = { :day => Time.now.strftime("%A").downcase, :color => @week.color }
 	end
 
 	def by_day_and_color
