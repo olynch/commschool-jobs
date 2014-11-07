@@ -6,7 +6,10 @@ Rails.application.routes.draw do
 	#resources :weeks
 	#resources :crews
 
-	root 'welcome#index'
+	root 'info#index'
+
+	get '/crews/:day/(:color)', to: 'info#by_day_and_color'
+	get '/days/:year/:month/:day', to: 'info#by_date'
 
 	# The priority is based upon order of creation: first created -> highest priority.
 	# See how all your routes lay out with "rake routes".

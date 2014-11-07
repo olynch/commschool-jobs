@@ -35,6 +35,8 @@ gem 'devise'
 # Use unicorn as the app server
 gem 'unicorn'
 
+gem 'react-rails', '~> 1.0.0pre', github: 'reactjs/react-rails'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

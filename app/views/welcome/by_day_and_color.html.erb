@@ -1,0 +1,8 @@
+<%= render :partial => 'mermaid', :locals => { :title => "Jobs on #{@day} for a #{@color} week"} %>
+<% if not @crews.nil? %>
+	<%= render 'crews' %>
+<% else %>
+	<div class="col-md-6 col-md-offset-3">
+		<h1>No Crews found for today</h1>
+	</div>
+<% end %>

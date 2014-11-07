@@ -1,57 +1,11 @@
 
-<div class="container">
+<%= render :partial => 'mermaid', :locals => { :title => "Jobs Today"} %>
+<% if not (@week.nil? or @crews.nil?) %>
+	<%= render 'crews' %>
+<% else %>
 	<div class="row">
-		<div class="col-md-2 col-md-offset-3">
-			<img src="/mermaid.gif" alt="Our Beloved Mermaid" />
-		</div>
-		<div class="col-md-4">
-			<h1>Jobs Today</h1>
+		<div class="col-md-6 col-md-offset-3">
+			<h1>No Crews found for today</h1>
 		</div>
 	</div>
-	<% if not (@week.nil? or @crews.nil?) %>
-		<div class="row">
-			<div class="col-md-3 col-md-offset-3">
-				<h3>Recess Cleanup</h3>
-				<% @crews[:recess].students.each do |s| %>
-					<%= s.name %><br />
-				<% end %>
-			</div>
-			<div class="col-md-3">
-				<h3>Lunch Setup</h3>
-				<% @crews[:setup].students.each do |s| %>
-					<%= s.name %><br />
-				<% end %>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-3 col-md-offset-3">
-				<h3><%= @crews[:lunch1].color.capitalize %> Lunch Crew</h3>
-				<p><strong>Crew Head: </strong> <%= @crews[:lunch1].crew_head %></p>
-				<p>
-					<% @crews[:lunch1].students.sort{|a, b| a.name <=> b.name }.each do |s| %>
-						<% if s.name != @crews[:lunch1].crew_head %>
-							<%= s.name %> </br>
-						<% end %>
-					<% end %>
-				</p>
-			</div>
-			<div class="col-md-3">
-				<h3><%= @crews[:lunch2].color.capitalize %> Lunch Crew</h3>
-				<p><strong>Crew Head: </strong> <%= @crews[:lunch2].crew_head %></p>
-				<p>
-					<% @crews[:lunch2].students.sort{|a, b| a.name <=> b.name }.each do |s| %>
-						<% if s.name != @crews[:lunch2].crew_head %>
-							<%= s.name %> </br>
-						<% end %>
-					<% end %>
-				</p>
-			</div>
-		</div>
-	<% else %>
-		<div class="row">
-			<div class="col-md-6 col-md-offset-3">
-				<h1>No Crews found for today</h1>
-			</div>
-		</div>
-	<% end %>
-</div>
+<% end %>

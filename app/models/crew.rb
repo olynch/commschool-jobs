@@ -8,7 +8,7 @@ class Crew < ActiveRecord::Base
 	validates :color, :presence => true
 	validates :day, :presence => true
 
-	Color_Hash = { 'purple' => ['red', 'blue', 'recess', 'setup'], 'orange' => ['red', 'yellow', 'recess', 'setup'], 'green' => ['yellow', 'blue', 'recess', 'setup'] }
+	Color_Hash = { 'purple' => [:red, :blue], 'orange' => [:red, :yellow], 'green' => [:yellow, :blue], 'rainbow' => [:red, :yellow, :blue] }
 
 	def new
 	end
@@ -17,15 +17,30 @@ class Crew < ActiveRecord::Base
 		# return the current crews as a ActiveRecord query
 		curweek = Week.current
 		if curweek
-			crew_map = Hash.new
-			day = Time.now.strftime("%A").downcase
-			[ :lunch1, :lunch2, :recess, :setup ].each.with_index do |item, i|
-				crew_map[item] = Crew.find_by(day: day, color: Color_Hash[curweek.color][i])
-			end
-			return crew_map
+			return Crew.by_day_and_color(Time.now.strftime("%A").downcase, curweek.color)
 		else
 			return nil
 		end
+	end
+
+	def self.by_date(year, month, day)
+		curweek = Week.by_date(year, month, day)
+		if curweek
+			return Crew.by_day_and_color(Time.mktime(year, month, day).strftime("%A").downcase, curweek.color)
+		else
+			return nil
+		end
+	end
+
+	def self.by_day_and_color(day, color)
+		crew_map = Hash.new
+		[ :recess, :setup ].each.with_index do |item, i|
+			crew_map[item] = Crew.find_by(day: day, color: item.to_s)
+		end
+		Color_Hash[color].each.with_index do |col, i|
+			crew_map[:"lunch#{i}"] = Crew.find_by(day: day, color: col.to_s)
+		end
+		crew_map
 	end
 
 	def color_enum

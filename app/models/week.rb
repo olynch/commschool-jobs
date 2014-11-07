@@ -16,7 +16,11 @@ class Week < ActiveRecord::Base
 	def self.current
 		# return the current week based on the time this was called
 		now = Time.now
-		return Week.find_by(start_day: now.midnight - ((now.wday - 1) * 60 * 60 * 24))
+		Week.find_by(start_day: now.midnight - ((now.wday - 1) * 60 * 60 * 24))
 	end
 
+	def self.by_date(year, month, day)
+		now = Time.mktime(year, month, day)
+		Week.find_by(start_day: now.midnight - ((now.wday - 1) * 60 * 60 * 24))
+	end
 end

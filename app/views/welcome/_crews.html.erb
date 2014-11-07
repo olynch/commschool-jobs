@@ -1,0 +1,54 @@
+
+<div class="row">
+	<div class="col-md-3 col-md-offset-3">
+		<h3>Recess Cleanup</h3>
+		<% @crews[:recess].students.each do |s| %>
+			<%= s.name %><br />
+		<% end %>
+	</div>
+	<div class="col-md-3">
+		<h3>Lunch Setup</h3>
+		<% @crews[:setup].students.each do |s| %>
+			<%= s.name %><br />
+		<% end %>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-3 col-md-offset-3">
+		<h3><%= @crews[:lunch0].color.capitalize %> Lunch Crew</h3>
+		<p><strong>Crew Head: </strong> <%= @crews[:lunch0].crew_head %></p>
+		<p>
+			<% @crews[:lunch0].students.sort{|a, b| a.name <=> b.name }.each do |s| %>
+				<% if s.name != @crews[:lunch0].crew_head %>
+					<%= s.name %> </br>
+		<% end %>
+	<% end %>
+		</p>
+	</div>
+	<div class="col-md-3">
+		<h3><%= @crews[:lunch1].color.capitalize %> Lunch Crew</h3>
+		<p><strong>Crew Head: </strong> <%= @crews[:lunch1].crew_head %></p>
+		<p>
+			<% @crews[:lunch1].students.sort{|a, b| a.name <=> b.name }.each do |s| %>
+				<% if s.name != @crews[:lunch1].crew_head %>
+					<%= s.name %> </br>
+		<% end %>
+	<% end %>
+		</p>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-3 col-md-offset-3">
+		<% if @crews[:lunch2] %>
+			<h3><%= @crews[:lunch2].color.capitalize %> Lunch Crew</h3>
+			<p><strong>Crew Head: </strong> <%= @crews[:lunch2].crew_head %></p>
+			<p>
+				<% @crews[:lunch2].students.sort{|a, b| a.name <=> b.name }.each do |s| %>
+					<% if s.name != @crews[:lunch2].crew_head %>
+						<%= s.name %> </br>
+					<% end %>
+				<% end %>
+			</p>
+		<% end %>
+	</div>
+</div>
